@@ -6,20 +6,27 @@
 -- 
 -- See README.txt for more information.
 
+
 chat_anticurse = {}
 chat_anticurse.simplemask = {}
 -- some english and some russian curse words
 -- i don't want to keep these words as cleartext in code, so they are stored like this.
-local x1='a'
-local x2='i'
-local x3='u'
-local x4='e'
-local x5='o'
-local y1='y'
-local y2='и'
-local y3='о'
-local y4='е'
-local y5='я'
+-- eventually to be exported in cleartext to a .txt file
+-- french and spanish curse words courtesy of mok
+-- note from mok cojer in MExico means the F word, but in peru cojer means to take and is common dialect. not added to this list for that reason
+-- due partially to laziness and partially to the fact that i am going to be transcoding these to /txt soon, franch and spanish words will not be masked
+
+
+local x1 = 'a'
+local x2 = 'i'
+local x3 = 'u'
+local x4 = 'e'
+local x5 = 'o'
+local y1 = 'y'
+local y2 = 'и'
+local y3 = 'о'
+local y4 = 'е'
+local y5 = 'я'
 
 chat_anticurse.simplemask[1] = ' '..x1..'s' .. 's '
 chat_anticurse.simplemask[2] = ' d' .. ''..x2..'ck'
@@ -50,6 +57,51 @@ chat_anticurse.simplemask[26] = 'n00b'
 chat_anticurse.simplemask[27] = 'noob'
 chat_anticurse.simplemask[28] = 'stupid'
 chat_anticurse.simplemask[29] = 'hate'
+chat_anticurse.simplemask[30] = 'tabarnak'
+chat_anticurse.simplemask[31] = 'osti'
+chat_anticurse.simplemask[32] = 'calisse'
+chat_anticurse.simplemask[33] = 'câlisse'
+chat_anticurse.simplemask[34] = 'viarge'
+chat_anticurse.simplemask[35] = 'criss'
+chat_anticurse.simplemask[36] = 'crisse'
+chat_anticurse.simplemask[37] = 'putain'
+chat_anticurse.simplemask[38] = 'pute'
+chat_anticurse.simplemask[39] = 'salope'
+chat_anticurse.simplemask[40] = 'nique ta mère'
+chat_anticurse.simplemask[41] = 'pétasse'
+chat_anticurse.simplemask[42] = 'enfoiré'
+chat_anticurse.simplemask[43] = 'enfoirée'
+chat_anticurse.simplemask[44] = 'sacrament'
+chat_anticurse.simplemask[45] = 'simonaque'
+chat_anticurse.simplemask[46] = 'merde'
+chat_anticurse.simplemask[47] = 'marde'
+chat_anticurse.simplemask[48] = 'imbécile'
+chat_anticurse.simplemask[49] = 'idiot'
+chat_anticurse.simplemask[50] = 'pénis'
+chat_anticurse.simplemask[51] = 'sexe'
+chat_anticurse.simplemask[52] = 'baise'
+chat_anticurse.simplemask[53] = 'bâtard'
+chat_anticurse.simplemask[54] = 'batard'
+chat_anticurse.simplemask[55] = 'puta'
+chat_anticurse.simplemask[56] = 'puto'
+chat_anticurse.simplemask[57] = 'concha su madre'
+chat_anticurse.simplemask[58] = 'concha tu madre'
+chat_anticurse.simplemask[59] = 'perra'
+chat_anticurse.simplemask[60] = 'pinche'
+chat_anticurse.simplemask[61] = 'pendejo'
+chat_anticurse.simplemask[62] = 'sexo'
+chat_anticurse.simplemask[63] = 'maricon'
+chat_anticurse.simplemask[64] = 'joto'
+chat_anticurse.simplemask[65] = 'bastardo'
+chat_anticurse.simplemask[66] = 'culo'
+chat_anticurse.simplemask[67] = 'verga'
+chat_anticurse.simplemask[68] = 'mierda'
+chat_anticurse.simplemask[69] = 'chinga'
+chat_anticurse.simplemask[70] = 'chingados'
+chat_anticurse.simplemask[71] = 'jode'
+chat_anticurse.simplemask[72] = 'faggot'
+
+
 
 local judge_name = 'Server'
 local seconds = '30'
