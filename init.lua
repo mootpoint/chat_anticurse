@@ -1,5 +1,5 @@
 -- Minetest 0.4.10+ mod: chat_anticurse
--- punish player for cursing by disconnecting them
+-- punish player for cursing by disconnecting them in increments ending ultimately in permanent ban
 --
 --  Created in 2015 by Andrey. 
 --  This mod is Free and Open Source Software, released under the LGPL 2.1 or later.
@@ -45,7 +45,9 @@ chat_anticurse.simplemask[21] = " f" .. ""..x3.."ck"
 chat_anticurse.simplemask[22] = ""..x1.."rs"..x4.."h"..x5.."l"..x4..""
 chat_anticurse.simplemask[23] = " c"..x3.."nt "
 
-
+local judge_name = 'Server'
+local seconds = '30'
+local cause = 'Cursing'
 
 chat_anticurse.check_message = function(name, message)
     local checkingmessage=string.lower( name.." "..message .." " )
@@ -70,16 +72,18 @@ end
 
 minetest.register_on_chat_message(function(name, message)
     local uncensored = chat_anticurse.check_message(name, message)
-
+    local judge_name = 'Server'
+    local seconds = '30'
+    local cause = 'Cursing'
     if uncensored == 1 then
-        minetest.kick_player(name, "Hey! Was there a bad word?")
-        minetest.log("action", "Player "..name.." warned for cursing. Chat:"..message)
+        justice.sentence(judge_name, name, tonumber(seconds), cause)
+        minetest.log("action", "Player "..name.." jailed for cursing. Chat:"..message)
         return true
     end
 
     if uncensored == 2 then
-        minetest.kick_player(name, "Cursing or words, inappropriate to game server. Kids may be playing here!")
-        minetest.chat_send_all("Player <"..name.."> warned for cursing" )
+        justice.sentence(judge_name, name, tonumber(seconds), cause)
+        -- minetest.chat_send_all("Player <"..name.."> jailed for cursing" )
         minetest.log("action", "Player "..name.." warned for cursing. Chat:"..message)
         return true
     end
@@ -92,14 +96,14 @@ if minetest.chatcommands["me"] then
         local uncensored = chat_anticurse.check_message(name, param)
 
         if uncensored == 1 then
-            minetest.kick_player(name, "Hey! Was there a bad word?")
+            justice.sentence(judge_name, name, tonumber(seconds), cause)
             minetest.log("action", "Player "..name.." warned for cursing. Msg:"..param)
             return
         end
 
         if uncensored == 2 then
-            minetest.kick_player(name, "Cursing or words, inappropriate to game server. Kids may be playing here!")
-            minetest.chat_send_all("Player <"..name.."> warned for cursing" )
+            justice.sentence(judge_name, name, tonumber(seconds), cause)
+            --minetest.chat_send_all("Player <"..name.."> warned for cursing" )
             minetest.log("action", "Player "..name.." warned for cursing. Me:"..param)
             return
         end
@@ -114,14 +118,14 @@ if minetest.chatcommands["msg"] then
         local uncensored = chat_anticurse.check_message(name, param)
 
         if uncensored == 1 then
-            minetest.kick_player(name, "Hey! Was there a bad word?")
+            justice.sentence(judge_name, name, tonumber(seconds), cause)
             minetest.log("action", "Player "..name.." warned for cursing. Msg:"..param)
             return
         end
 
         if uncensored == 2 then
-            minetest.kick_player(name, "Cursing or words, inappropriate to game server. Kids may be playing here!")
-            minetest.chat_send_all("Player <"..name.."> warned for cursing" )
+            justice.sentence(judge_name, name, tonumber(seconds), cause)
+           -- minetest.chat_send_all("Player <"..name.."> warned for cursing" )
             minetest.log("action", "Player "..name.." warned for cursing. Msg:"..param)
             return
         end
